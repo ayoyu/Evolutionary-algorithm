@@ -46,7 +46,7 @@ class Population:
 
     @staticmethod
     def choose_random_alphabet():
-        alphabet = string.ascii_letters + ' ' + '0123456789'
+        alphabet = string.ascii_letters + ' ' + '0123456789' + string.punctuation
         return random.choice(list(alphabet))
 
     # Mutation: change some parent DNA for having new characteristics
@@ -81,7 +81,7 @@ class Entitie:
         return len(self.dna)
     
     def random_choice_dna(self):
-        alphabet = string.ascii_letters + ' ' + '0123456789'
+        alphabet = string.ascii_letters + ' ' + '0123456789' + string.punctuation
         return random.sample(alphabet, self.dna_size)
 
     def fitness_score(self, other):
@@ -90,34 +90,3 @@ class Entitie:
             if x == y:
                 similarity += 1
         return similarity / self.dna_size
-        
-
-if __name__ == '__main__':
-	import time
-	start = time.time()
-	target = "GeneticAlgorithm389742"
-	p = Population(150, list(target))
-	fitness = []
-	gen = 1
-	while True:
-		f = p.proba_of_importance()
-		fitness_max = np.max(f)
-		fitness.append(fitness_max)
-		if fitness_max == 1:
-			break
-		else:
-			p.create_new_generation()
-			gen += 1
-	end = time.time()
-	print(f'generation: {gen}')
-
-	print(f'Time: {end - start:.2f} s')
-	for entitie in p.entities:
-		print(entitie, entitie.fitness_score(list(target)))
-	plt.plot(range(gen), fitness)
-	plt.xlabel('generation')
-	plt.ylabel('max fitness over generation')
-	plt.title(target)
-	plt.show()
-
-    
