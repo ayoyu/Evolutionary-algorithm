@@ -1,8 +1,9 @@
 # Evolutionary-algorithm
 
-## Password Cracker:
+## Password Cracker
 
-#### craking code problem with genetic algorithm
+#### CrakingPassword problem with genetic algorithm
+- https://en.wikipedia.org/wiki/Genetic_algorithm
 
 ## Instructions
 
